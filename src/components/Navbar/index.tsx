@@ -8,6 +8,14 @@ export const Navbar = () => {
         <NextLink href="/" passHref>
           <Link underline="hover">Home</Link>
         </NextLink>
+        <Link
+          href="https://github.com/seasonalmatcha/reeracoen-test"
+          target="_blank"
+          rel="noreferrer"
+          underline="hover"
+        >
+          Source
+        </Link>
       </Stack>
     </AppBar>
   );
