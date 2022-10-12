@@ -11,9 +11,18 @@ import { useSelector } from '@/store';
 const Home: NextPage = () => {
   const { type, period } = useSelector((state) => state.newsFilter);
 
-  const { isLoading, isFetching, data } = useQuery<APIResponse<Article>>([type, period], () =>
-    getPopularNews(type, period),
-  );
+  const { isLoading, isFetching, data, error } = useQuery<
+    APIResponse<Article>,
+    { message: string } | undefined
+  >([type, period], () => getPopularNews(type, period));
+
+  if (error) {
+    return (
+      <Box mt={4}>
+        <Typography>{error.message}</Typography>
+      </Box>
+    );
+  }
 
   return (
     <div>
